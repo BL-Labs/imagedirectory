@@ -3,6 +3,10 @@ Flickr Common Manifests
 
 Manifests of the public domain images uploaded to Flickr Commons, with descriptive information about the books they were taken from.
 
+Please read the following for a better idea of why we are doing this:
+
+http://britishlibrary.typepad.co.uk/digital-scholarship/2013/12/a-million-first-steps.html
+
 Structure
 =========
 
