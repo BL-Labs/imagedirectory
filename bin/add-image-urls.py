@@ -24,18 +24,20 @@ def parse(path, api):
 
     logging.info("parsing %s" % path)
 
-    tmp = "%s.tmp" % path
-    out = open(tmp, 'w')
-
     fh = open(path, 'r')
     reader = csv.DictReader(fh, delimiter='\t')
 
+    tmp = "%s.tmp" % path
     writer = None
 
     sizes = ('small', 'medium', 'large', 'original')
     props = ('source', 'height', 'width')
 
     for row in reader:
+
+        if row.get('flickr_original_source', False):
+            logging.info("already processed %s, skipping" % path)
+            return
 
         if not writer:
 
@@ -46,6 +48,8 @@ def parse(path, api):
                     
                     key = "flickr_%s_%s" % (sz, prop)
                     fieldnames.append(key)
+
+            out = open(tmp, 'w')
 
             writer = csv.DictWriter(out, fieldnames, delimiter='\t')
             writer.writeheader()
@@ -81,6 +85,7 @@ def parse(path, api):
         writer.writerow(row)
 
     os.rename(tmp, path)
+    time.sleep(1)
 
 if __name__ == '__main__':
 
@@ -111,4 +116,3 @@ if __name__ == '__main__':
             continue
 
         parse(path, api)
-        time.sleep(1)
