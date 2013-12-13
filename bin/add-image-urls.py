@@ -57,6 +57,7 @@ def parse(path, api):
         #
 
         id = row['flickr_id']
+        logging.debug("get sizes for %s" % id)
 
         method = 'flickr.photos.getSizes'
 
