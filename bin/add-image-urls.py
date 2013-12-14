@@ -61,7 +61,7 @@ def parse(path, api):
         #
 
         id = row['flickr_id']
-        logging.debug("get sizes for %s" % id)
+        logging.debug("[%s] get sizes for %s" % (path, id))
 
         method = 'flickr.photos.getSizes'
 
@@ -82,8 +82,8 @@ def parse(path, api):
                 data = json.load(rsp)
                 keep_trying = False
                 break
-            except Expcetion, e:
-                logging.error("API call failed: %s" % e)
+            except Exception, e:
+                logging.error("[%s] API call failed: %s" % (path, e))
                 time.sleep(try_again)
 
         for sz in data['sizes']['size']:
