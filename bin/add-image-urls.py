@@ -30,6 +30,10 @@ def parse(path, api):
     tmp = "%s.tmp" % path
     writer = None
 
+    if os.path.exists(tmp):
+        logging.info("%s already exists so I guess %s is being processed, skipping" % (tmp, path))
+        return
+
     sizes = ('small', 'medium', 'large', 'original')
     props = ('source', 'height', 'width')
 
@@ -68,8 +72,19 @@ def parse(path, api):
             'nojsoncallback': 1
         }
 
-        rsp = api.execute_method(method=method, args=args, sign=False)
-        data = json.load(rsp)
+        keep_trying = True
+        try_again = 5
+
+        while keep_trying:
+
+            try:
+                rsp = api.execute_method(method=method, args=args, sign=False)
+                data = json.load(rsp)
+                keep_trying = False
+                break
+            except Expcetion, e:
+                logging.error("API call failed: %s" % e)
+                time.sleep(try_again)
 
         for sz in data['sizes']['size']:
             
