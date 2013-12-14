@@ -43,6 +43,12 @@ def parse(path, api):
             logging.info("already processed %s, skipping" % path)
             return
 
+        id = row.get('flickr_id', None)
+
+        if not id:
+            logging.warning("%s is missing an ID" % path)
+            return
+
         if not writer:
 
             fieldnames = row.keys()
@@ -58,9 +64,6 @@ def parse(path, api):
             writer = csv.DictWriter(out, fieldnames, delimiter='\t')
             writer.writeheader()
 
-        #
-
-        id = row['flickr_id']
         logging.debug("[%s] get sizes for %s" % (path, id))
 
         method = 'flickr.photos.getSizes'
