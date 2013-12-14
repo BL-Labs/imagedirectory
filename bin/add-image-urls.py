@@ -81,7 +81,7 @@ def parse(path, api):
                 rsp = api.execute_method(method=method, args=args, sign=False)
                 data = json.load(rsp)
                 keep_trying = False
-                break
+
             except Exception, e:
                 logging.error("[%s] API call failed: %s" % (path, e))
                 time.sleep(try_again)
