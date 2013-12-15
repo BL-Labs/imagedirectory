@@ -16,7 +16,7 @@ All TSV files are in UTF-8 encoding and are split by year, and by size of illust
 - Medium are between small and 'plate' size
 - 'Plates' are any images larger than 1000x1000 (1,000,000 pixel area)
 
-Each image is represented by a single row in the manifest. From left to right, the columns are:
+Each image is represented by a single row in the manifest. The columns are:
 
     flickr_id:       The 'photo' identifier on flickr
     flickr_url:      A handy URL to the image for convenience
@@ -31,8 +31,23 @@ Each image is represented by a single row in the manifest. From left to right, t
     image_idx:       What image number on the page (useful when multiple are present. Arbitrary but unique to an image.)
     ARK_id_of_book:  ARK identifier for the digitised version of the work [NB known ~20% of the time]
     BL_DLS_ID:       Digital Library Service identifier.(Starts with 'lsidyv...') [NB known ~20% of the time]
+     - And, thanks to [Aaron Straup Cope](@straup), the rows now include direct links to the files, as well as the pixel sizes of them:
+    flickr_original_source:    URL to jpg file (the original, and largest resolution)
+    flickr_original_height:    Height in px of original
+    flickr_original_width:     Width in px of original
+    flickr_large_source:       And so on.
+    flickr_large_height
+    flickr_large_width
+    flickr_medium_source
+    flickr_medium_height
+    flickr_medium_width
+    flickr_small_source
+    flickr_small_height
+    flickr_small_width 
 
-NB You can retrieve the PDF of the book by appending the BL\_DLS\_ID to the following URL:
+NB As @straup himself notes, this adds bloat to the list and I agree with him on that, but also on the fact that this keeps it simple and grokkable and should allow anyone else wanting to do stats on the set to not have to hit Flickr's API to get this sort of info.
+
+You can retrieve the PDF of the book by appending the BL\_DLS\_ID to the following URL:
 
 http://access.bl.uk/item/pdf/...
 
