@@ -42,6 +42,8 @@ The fields are as follows:
 
 Most fields, except 'date', 'edition', 'issuance', are potential multivalued and have been generated as lists of values ordered in the same manner that they were in the metadata that accompanied these scans.
 
+*NB* The metadata is for all the books that were scanned as part of the Microsoft Live Search Books project. Not all of these books had illustrations in them that were detected. The 'flickr\_url\_to\_book\_images' field is generated from the identifier of the book, and so there may be nothing on Flickr for that book!
+
 [YEAR]_[Image size].tsv
 -----------------------
 
