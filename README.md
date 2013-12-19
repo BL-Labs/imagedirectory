@@ -10,6 +10,41 @@ http://britishlibrary.typepad.co.uk/digital-scholarship/2013/12/a-million-first-
 Structure
 =========
 
+book_metadata.json
+------------------
+
+A large hash in the following form:
+
+    {
+    "000000037" : {  ... bundle of metadata for book with ID 000000037 ... },
+    "000000206" : { ... etc ... },
+    ...
+    }
+
+The fields are as follows:
+
+    'identifier' - The book ID, eg 000000206
+    'title' - a bit of a misnomer. The book might have more than a single title attributed to it,
+              and other details, inferred by a cataloguer/librarian might be added to it.
+              Typically, these addition details will be enclosed by '[]' brackets
+    'authors' - (Named people who are 'personal' contributors). If the metadata states a particular
+                role should be attributed to them, then this is marked also.
+    'corporate' - as above, but corporate bodies rather than individuals.
+    'place' - Place of publishing or manufacture
+    'datefield' - The details from the published date field
+    'date' - A date inferred by me by sweeping through fields where this information may likely hide such as
+             'publisher'.
+    'publisher' - The stated publisher of the work
+    'edition' - Edition of the work
+    'issuance' - Issuance, typically 'monograph'
+    'shelfmarks' - Shelfmark, or marks of where the physical original 'lives'.
+    'flickr_url_to_book_images' - link to the tag page that shows all the images taken from this book
+
+Most fields, except 'date', 'edition', 'issuance', are potential multivalued and have been generated as lists of values ordered in the same manner that they were in the metadata that accompanied these scans.
+
+[YEAR]_[Image size].tsv
+-----------------------
+
 All TSV files are in UTF-8 encoding and are split by year, and by size of illustration. 
 
 - Small images are anything below 800x600 (480,000 in pixel area) This has nothing to do with the aspect ratio of the image i.e. they can be long and thin.
