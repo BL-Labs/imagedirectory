@@ -28,5 +28,5 @@ print("Number of different sizes: {0}\n Most of a given size:{1} {2}".format(len
 
 plt.scatter(x,y,s,alpha=0.5)
 
-plt.savefig("size_distribution.png", dpi=300)
+plt.savefig("size_distribution.png", dpi=600)
 
