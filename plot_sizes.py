@@ -20,13 +20,13 @@ for k,v in data.iteritems():
   x.append(tx)
   y.append(ty)
   if v > 100:
-    s.append(np.pi * (5.0 * v / 250.0)**2)
+    s.append(np.pi * (2.0 * v / 250.0)**2)
   else:
-    s.append(np.pi)
+    s.append(np.pi / 4.0)
   
 print("Number of different sizes: {0}\n Most of a given size:{1} {2}".format(len(data), m, m_key))
 
 plt.scatter(x,y,s,alpha=0.5)
 
-plt.savefig("size_distribution.png")
+plt.savefig("size_distribution.png", dpi=300)
 
